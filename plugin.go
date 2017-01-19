@@ -8,11 +8,12 @@ import (
 	"path"
 )
 
-// Plugin defines the S3 plugin parameters.
+// Plugin defines the ansibrest plugin parameters.
 type Plugin struct {
 	EndPoint  string
 	PlayBook  string
 	Inventory string
+	ExtraVars string
 }
 
 // Exec runs the plugin
@@ -28,6 +29,7 @@ func (p *Plugin) Exec() error {
 
 	q := req.URL.Query()
 	q.Add("inventory", p.Inventory)
+	q.Add("extraVars", p.ExtraVars)
 	req.URL.RawQuery = q.Encode()
 
 	res, err := http.DefaultClient.Do(req)

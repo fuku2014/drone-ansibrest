@@ -34,6 +34,11 @@ func main() {
 			EnvVar: "PLUGIN_INVENTORY",
 		},
 		cli.StringFlag{
+			Name:   "extra_vars",
+			Usage:  "extraVars",
+			EnvVar: "PLUGIN_EXTRA_VARS",
+		},
+		cli.StringFlag{
 			Name:  "env-file",
 			Usage: "source env file",
 		},
@@ -50,9 +55,10 @@ func run(c *cli.Context) error {
 	}
 
 	plugin := Plugin{
-		EndPoint:   c.String("endpoint"),
-		PlayBook:   c.String("playbook"),
+		EndPoint:  c.String("endpoint"),
+		PlayBook:  c.String("playbook"),
 		Inventory: c.String("inventory"),
+		ExtraVars: c.String("extra_vars"),
 	}
 
 	return plugin.Exec()

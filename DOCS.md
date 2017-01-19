@@ -7,6 +7,7 @@ The following parameters are used to configure the plugin:
 * **endpoint** - endpoint
 * **playbook** - playbook
 * **inventry** - inventry
+* **extra_vars** - extraVars
 
 ## Example
 
